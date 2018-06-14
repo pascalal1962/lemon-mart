@@ -8,7 +8,7 @@ jobs:
       - checkout
       - setup_remote_docker:
         docker_layer_caching: false
-      - run
+      - run:
         name: Build Docker Image
         commands: |
           npm run build:ci
