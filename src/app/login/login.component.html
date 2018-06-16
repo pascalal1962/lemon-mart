@@ -31,12 +31,12 @@
               Password is at least 8 characters long
             </mat-error>
             <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">
-              Password cannot be longre than 50 characters
+              Password cannot be longer than 50 characters
             </mat-error>
           </mat-form-field>
         </div>
         <div fxLayout="row" class="margin-top">
-          <div *ngIf="loginError" class="mat-caption error">{{ loginError }}</div>
+          <div *ngIf="loginError" class="mat-caption error">{{loginError}}</div>
           <div class="flex-spacer"></div>
           <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button>
         </div>

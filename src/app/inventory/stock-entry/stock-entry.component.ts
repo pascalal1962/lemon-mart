@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-stock-entry',
-  template: `
-    <p>
-      stock-entry works!
-    </p>
-  `,
-  styles: [],
+  templateUrl: './stock-entry.component.html',
+  styleUrls: ['./stock-entry.component.css'],
 })
 export class StockEntryComponent implements OnInit {
   constructor() {}

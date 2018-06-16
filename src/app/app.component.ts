@@ -1,36 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { ObservableMedia } from '@angular/flex-layout'
-import { MatIconRegistry } from '@angular/material/icon'
+import { MatIconRegistry } from '@angular/material'
 import { DomSanitizer } from '@angular/platform-browser'
 import { AuthService } from './auth/auth.service'
-
 @Component({
   selector: 'app-root',
-  template: `
-    <div class="app-container">
-      <mat-toolbar color="primary" fxLayoutGap="8px" class="app-toolbar"
-          [class.app-is-mobile]="media.isActive('xs')">
-        <button *ngIf="displayAccountIcons" mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <a mat-button routerLink="/home"><mat-icon svgIcon="lemon"></mat-icon><span class="mat-h2">LemonMart</span></a>
-        <span class="flex-spacer"></span>
-        <button *ngIf="displayAccountIcons" mat-mini-fab routerLink="/user/profile"
-          matTooltip="Profile" aria-label="User Profile"><mat-icon>account_circle</mat-icon></button>
-        <button *ngIf="displayAccountIcons" mat-mini-fab routerLink="/user/logout"
-          matTooltip="Logout" aria-label="Logout"><mat-icon>lock_open</mat-icon></button>
-      </mat-toolbar>
-      <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="media.isActive('xs') ? 56 : 0">
-        <mat-sidenav #sidenav [mode]="media.isActive('xs') ? 'over' : 'side'"
-            [fixedInViewport]="media.isActive('xs')" fixedTopGap="56">
-          <app-navigation-menu></app-navigation-menu>
-        </mat-sidenav>
-        <mat-sidenav-content>
-          <router-outlet></router-outlet>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-    </div>
-  `,
   styles: [
     `
       .app-container {
@@ -58,11 +32,39 @@ import { AuthService } from './auth/auth.service'
       }
     `,
   ],
+  template: `
+  <div class="app-container">
+    <mat-toolbar color="primary" fxLayoutGap="8px" class="app-toolbar"
+      [class.app-is-mobile]="media.isActive('xs')">
+      <button *ngIf="displayAccountIcons" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a mat-icon-button routerLink="/home">
+        <mat-icon svgIcon="lemon"></mat-icon><span class="mat-h2">LemonMart</span>
+      </a>
+      <span class="flex-spacer"></span>
+      <button *ngIf="displayAccountIcons" mat-mini-fab routerLink="/user/profile"
+        matTooltip="Profile" aria-label="User Profile"><mat-icon>account_circle</mat-icon>
+      </button>
+      <button *ngIf="displayAccountIcons" mat-mini-fab routerLink="/user/logout"
+        matTooltip="Logout" aria-label="Logout"><mat-icon>lock_open</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-sidenav-container class="app-sidenav-container"
+                          [style.marginTop.px]="media.isActive('xs') ? 56 : 0">
+      <mat-sidenav #sidenav [mode]="media.isActive('xs') ? 'over' : 'side'"
+                  [fixedInViewport]="media.isActive('xs')" fixedTopGap="56">
+        <app-navigation-menu></app-navigation-menu>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet class="app-container"></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  `,
 })
 export class AppComponent implements OnInit {
-  title = 'app'
   _displayAccountIcons = false
-
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,

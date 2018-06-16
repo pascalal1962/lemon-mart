@@ -34,7 +34,7 @@ export const defaultAuthStatus = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService extends CacheService {
+export class AuthService extends CacheService implements IAuthService {
   authStatus = new BehaviorSubject<IAuthStatus>(
     this.getItem('authStatus') || defaultAuthStatus
   )
@@ -57,7 +57,7 @@ export class AuthService extends CacheService {
     password: string
   ): Observable<IServerAuthResponse> {
     if (!email.toLowerCase().endsWith('@test.com')) {
-      return observableThrowError('Failed to login! Email needs to end with @test.com')
+      return observableThrowError('Failed to login! Email needs to end with @test.com.')
     }
 
     const authStatus = {

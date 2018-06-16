@@ -4,15 +4,16 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MaterialModule } from './/material.module'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { AuthGuard } from './auth/auth-guard.service'
 import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
 import { AuthService } from './auth/auth.service'
 import { SimpleDialogComponent } from './common/simple-dialog/simple-dialog.component'
 import { UiService } from './common/ui.service'
 import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
+import { MaterialModule } from './material.module'
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
@@ -22,8 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    SimpleDialogComponent,
     NavigationMenuComponent,
+    SimpleDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   providers: [
     AuthService,
+    AuthGuard,
     UiService,
     {
       provide: HTTP_INTERCEPTORS,

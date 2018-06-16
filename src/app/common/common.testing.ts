@@ -3,17 +3,21 @@ import { MediaChange } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SafeResourceUrl, SafeValue } from '@angular/platform-browser'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+// tslint:disable-next-line:max-line-length
 import { SecurityContext } from '@angular/platform-browser/src/security/dom_sanitization_service'
 import { RouterTestingModule } from '@angular/router/testing'
 import { Observable, of, Subscription } from 'rxjs'
+import { AuthService } from '../auth/auth.service'
+import { AuthServiceFake } from '../auth/auth.service.fake'
 import { MaterialModule } from '../material.module'
+import { UiService } from './ui.service'
 
 const FAKE_SVGS = {
   lemon: '<svg><path id="lemon" name="lemon"></path></svg>',
 }
 
 export class ObservableMediaFake {
-  inActive(query: string): boolean {
+  isActive(query: string): boolean {
     return false
   }
 
@@ -32,8 +36,8 @@ export class ObservableMediaFake {
 
 export class MatIconRegistryFake {
   _document = document
-
   addSvgIcon(iconName: string, url: SafeResourceUrl): this {
+    // this.addSvgIcon('lemon', 'lemon.svg')
     return this
   }
 
@@ -58,14 +62,14 @@ export class DomSanitizerFake {
   bypassSecurityTrustResourceUrl(url: string): SafeResourceUrl {
     return {} as SafeResourceUrl
   }
-
   sanitize(context: SecurityContext, value: SafeValue | string | null): string | null {
     return value ? value.toString() : null
   }
 }
 
 export const commonTestingProviders: any[] = [
-  // Intentionally left blank
+  { provide: AuthService, useClass: AuthServiceFake },
+  UiService,
 ]
 
 export const commonTestingModules: any[] = [

@@ -3,6 +3,13 @@ import { AuthService } from '../auth/auth.service'
 
 @Component({
   selector: 'app-home',
+  styles: [
+    `
+      div[fxLayout] {
+        margin-top: 32px;
+      }
+    `,
+  ],
   template: `
     <div *ngIf="displayLogin">
       <app-login></app-login>
@@ -11,17 +18,9 @@ import { AuthService } from '../auth/auth.service'
       <span class="mat-display-3">You get a lemon, you get a lemon, you get a lemon...</span>
     </div>
   `,
-  styles: [
-    `
-      div[fxLayout] {
-        margin-top: 32px;
-      }
-    `,
-  ],
 })
 export class HomeComponent implements OnInit {
   private _displayLogin = true
-
   constructor(private authService: AuthService) {}
 
   ngOnInit() {

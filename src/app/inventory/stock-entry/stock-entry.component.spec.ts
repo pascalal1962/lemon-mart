@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { StockEntryComponent } from './stock-entry.component'
 
 describe('StockEntryComponent', () => {
