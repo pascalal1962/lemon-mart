@@ -10,6 +10,8 @@ import { Observable, of, Subscription } from 'rxjs'
 import { AuthService } from '../auth/auth.service'
 import { AuthServiceFake } from '../auth/auth.service.fake'
 import { MaterialModule } from '../material.module'
+import { UserService } from '../user/user/user.service'
+import { UserServiceFake } from '../user/user/user.service.fake'
 import { UiService } from './ui.service'
 
 const FAKE_SVGS = {
@@ -69,6 +71,7 @@ export class DomSanitizerFake {
 
 export const commonTestingProviders: any[] = [
   { provide: AuthService, useClass: AuthServiceFake },
+  { provide: UserService, useClass: UserServiceFake },
   UiService,
 ]
 

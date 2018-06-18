@@ -1,18 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-import { NavigationMenuComponent } from './navigation-menu.component'
 
-describe('NavigationMenuComponent', () => {
-  let component: NavigationMenuComponent
-  let fixture: ComponentFixture<NavigationMenuComponent>
+import { UserTableComponent } from './user-table.component'
+
+describe('UserTableComponent', () => {
+  let component: UserTableComponent
+  let fixture: ComponentFixture<UserTableComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationMenuComponent],
+      declarations: [UserTableComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationMenuComponent)
+    fixture = TestBed.createComponent(UserTableComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

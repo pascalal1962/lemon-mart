@@ -8,4 +8,4 @@ import { PosComponent } from './pos/pos.component'
   imports: [CommonModule, PosRoutingModule],
   declarations: [PosComponent],
 })
-export class PosModule { }
+export class PosModule {}
